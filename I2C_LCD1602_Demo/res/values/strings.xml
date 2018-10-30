@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">I2C-LCD1602 Sample</string>
+    <string name="MainActivityTitle">I2C-LCD1602 Sample</string>
+    <string name="sendButtonText">Apply</string>
+</resources>

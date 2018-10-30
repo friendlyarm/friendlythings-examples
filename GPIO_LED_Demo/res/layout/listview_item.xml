@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dip" >
+
+    <Switch
+        android:id="@+id/pin_switch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:switchMinWidth="20dp"
+        android:textOn="High"
+        android:textOff="Low"
+        android:textSize="20sp"
+        android:showText="true"
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/track" />
+        
+</RelativeLayout>
