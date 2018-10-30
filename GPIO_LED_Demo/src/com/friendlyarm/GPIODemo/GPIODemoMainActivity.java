@@ -198,7 +198,8 @@ public class GPIODemoMainActivity extends Activity {
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(int pos, View convertView, ViewGroup parent) {
+			final int position = pos;
 			ViewHolder viewHolder = null;
 			if (convertView == null) {
 				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

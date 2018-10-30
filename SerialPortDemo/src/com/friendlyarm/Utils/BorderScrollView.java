@@ -14,9 +14,7 @@ public class BorderScrollView extends ScrollView
     {
         super.onDraw(canvas);
         Paint paint = new Paint();
-        //  将边框设为黑色
         paint.setColor(android.graphics.Color.GRAY);
-        //  画TextView的4个边
         canvas.drawLine(0, 0, this.getWidth() - 1, 0, paint);
         canvas.drawLine(0, 0, 0, this.getHeight() - 1, paint);
         canvas.drawLine(this.getWidth() - 1, 0, this.getWidth() - 1, this.getHeight() - 1, paint);

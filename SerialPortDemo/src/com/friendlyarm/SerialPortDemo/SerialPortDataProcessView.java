@@ -14,7 +14,6 @@ import android.text.Html;
 import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import com.friendlyarm.FriendlyThings.HardwareControler;
 import com.friendlyarm.FriendlyThings.BoardType;
 import com.friendlyarm.SerialPortDemo.R;

@@ -1,6 +1,7 @@
 package com.friendlyarm.PWMDemo;
 
-import com.friendlyarm.AndroidSDK.HardwareControler;
+import com.friendlyarm.FriendlyThings.HardwareControler;
+import com.friendlyarm.FriendlyThings.BoardType;
 import com.friendlyarm.PWMDemo.R;
 import com.friendlyarm.Utils.CommonFuncs;
 
@@ -21,6 +22,17 @@ public class PWMTestingActivity extends Activity implements OnClickListener {
 	Button btnAdd;
 	
 	final int smart4418PWMGPIOPin = 97; //GPIOD1, Smart4418/NanoPC-T2/NanoPC-T3
+    
+    private int mBoardType = HardwareControler.getBoardType();
+    private boolean isS5Pxx18Board() {
+        if (mBoardType>=BoardType.S5P4418_BASE && mBoardType<=BoardType.S5P4418_MAX) {
+            return true;
+        }
+        if (mBoardType>=BoardType.S5P6818_BASE && mBoardType<=BoardType.S5P6818_MAX) {
+            return true;
+        }
+        return false;
+    }
 	
     /** Called when the activity is first created. */
     @Override
@@ -45,7 +57,7 @@ public class PWMTestingActivity extends Activity implements OnClickListener {
         int boardType = HardwareControler.getBoardType();
         Log.d("PWMDemo", "boardtype = " + boardType);
         
-        if (HardwareControler.isS5P4418Board() || HardwareControler.isS5P6818Board()) {
+        if (isS5Pxx18Board()) {
             if (hw.PWMPlayEx(smart4418PWMGPIOPin, f) != 0) {
                 CommonFuncs.showAlertDialog(this,"Fail to play!");
             }
@@ -58,7 +70,7 @@ public class PWMTestingActivity extends Activity implements OnClickListener {
     
     private void stopPWM()
     {
-        if (HardwareControler.isS5P4418Board() || HardwareControler.isS5P6818Board()) {
+        if (isS5Pxx18Board()) {
         	if (hw.PWMStopEx(smart4418PWMGPIOPin) != 0) {
     			CommonFuncs.showAlertDialog(this,"Fail to stop!");
     		}
