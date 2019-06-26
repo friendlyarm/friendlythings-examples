@@ -60,5 +60,6 @@ public class BoardType {
     public static final int NanoPC_T4 = RK3399_BASE+1;
     public static final int NanoPi_M4 = RK3399_BASE+2;
     public static final int NanoPi_NEO4 = RK3399_BASE+3;
+    public static final int SOM_RK3399 = RK3399_BASE+4;
     public static final int RK3399_MAX = NanoPi_NEO4;
 }

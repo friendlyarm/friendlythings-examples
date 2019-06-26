@@ -160,6 +160,9 @@ public class GPIODemoMainActivity extends Activity {
 			demoGPIOPins.put("Pin16", 54);
 			demoGPIOPins.put("Pin18", 55);
 			demoGPIOPins.put("Pin22", 56);
+		} else if (boardType == BoardType.SOM_RK3399) {
+			demoGPIOPins.put("Pin7", 41);
+			demoGPIOPins.put("Pin9", 42);
 		} else if (android.os.Build.VERSION.RELEASE.contains("4.1.2")) {
 			demoGPIOPins.put("LED 1", 281);
 			demoGPIOPins.put("LED 2", 282);

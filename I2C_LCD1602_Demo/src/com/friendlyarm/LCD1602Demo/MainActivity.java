@@ -68,7 +68,7 @@ public class MainActivity extends Activity implements OnClickListener {
         messageHandler = new MessageHandler(looper);
         String i2cDevName = "/dev/i2c-0";
         int boardType = HardwareControler.getBoardType();
-        if (boardType == BoardType.NanoPC_T4 || boardType == BoardType.NanoPi_M4 || boardType == BoardType.NanoPi_NEO4) {
+        if (boardType == BoardType.NanoPC_T4 || boardType == BoardType.NanoPi_M4 || boardType == BoardType.NanoPi_NEO4 || boardType == BoardType.SOM_RK3399) {
              i2cDevName = "/dev/i2c-2";
         }
         devFD = HardwareControler.open(i2cDevName, FileCtlEnum.O_RDWR);

@@ -92,7 +92,7 @@ public class RTCDemoMainActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
             case MSG_SHOW_DATETIME:
-                if (mBoardType == BoardType.NanoPC_T4 || mBoardType == BoardType.NanoPi_M4 || mBoardType == BoardType.NanoPi_NEO4) {
+                if (mBoardType == BoardType.NanoPC_T4 || mBoardType == BoardType.NanoPi_M4 || mBoardType == BoardType.NanoPi_NEO4 || mBoardType == BoardType.SOM_RK3399) {
                     mDateTextView.setText(readFromFile("/sys/class/rtc/rtc0/","date"));
                     mTimeTextView.setText(readFromFile("/sys/class/rtc/rtc0/","time"));
                 }
@@ -162,7 +162,9 @@ public class RTCDemoMainActivity extends Activity {
     public void onEnableAutoWakeUpPressed(View view) {
         if (mBoardType == BoardType.NanoPC_T4 
             || mBoardType == BoardType.NanoPi_M4 
-            || mBoardType == BoardType.NanoPi_NEO4) {
+            || mBoardType == BoardType.NanoPi_NEO4
+            || mBoardType == BoardType.SOM_RK3399
+            ) {
             if (writeToFile("/sys/class/rtc/rtc0/wakealarm", "+" + String.valueOf(mWakeUpSeconds))) {
                 Toast.makeText(this, String.format("Performed successfully"),
                         Toast.LENGTH_SHORT).show();

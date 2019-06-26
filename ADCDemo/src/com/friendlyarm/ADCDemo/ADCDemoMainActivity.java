@@ -67,7 +67,7 @@ public class ADCDemoMainActivity extends Activity {
 
 			switch (msg.what) {
 			case 1:
-				if (mBoardType == BoardType.NanoPC_T4 || mBoardType == BoardType.NanoPi_M4 || mBoardType == BoardType.NanoPi_NEO4) {
+				if (mBoardType == BoardType.NanoPC_T4 || mBoardType == BoardType.NanoPi_M4 || mBoardType == BoardType.NanoPi_NEO4 || mBoardType == BoardType.SOM_RK3399) {
 					//path: 
 					//ADC
 					//in_voltage0_raw

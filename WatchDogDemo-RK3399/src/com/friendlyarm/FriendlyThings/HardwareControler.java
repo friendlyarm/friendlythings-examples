@@ -15,13 +15,13 @@ public class HardwareControler
     /* Serial Port */
     static public native int openSerialPort( String devName, long baud, int dataBits, int stopBits );
     static public native int openSerialPortEx( String devName
-    		, long baud
-    		, int dataBits
-    		, int stopBits
-    		, String parityBit
-    		, String flowCtrl
-    		);
-	
+            , long baud
+            , int dataBits
+            , int stopBits
+            , String parityBit
+            , String flowCtrl
+            );
+    
     /* LED */
     static public native int setLedState( int ledID, int ledState );
     
