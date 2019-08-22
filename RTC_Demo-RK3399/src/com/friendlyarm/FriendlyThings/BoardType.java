@@ -49,7 +49,10 @@ public class BoardType {
     public static final int NanoPi_K1_Plus = ALLWINNER_BASE+13;
     public static final int NanoPi_Hero = ALLWINNER_BASE+14;
     public static final int NanoPi_Duo2 = ALLWINNER_BASE+15;
-    public static final int ALLWINNER_MAX = NanoPi_Duo2;
+    public static final int NanoPi_R1 = ALLWINNER_BASE+16;
+	public static final int NanoPi_C1 = ALLWINNER_BASE+17;
+	public static final int NanoPi_NEO2_Black = ALLWINNER_BASE+18;
+    public static final int ALLWINNER_MAX = NanoPi_NEO2_Black;
 
     //amlogic
     public static final int AMLOGIC_BASE = (8000);
@@ -61,5 +64,7 @@ public class BoardType {
     public static final int NanoPi_M4 = RK3399_BASE+2;
     public static final int NanoPi_NEO4 = RK3399_BASE+3;
     public static final int SOM_RK3399 = RK3399_BASE+4;
-    public static final int RK3399_MAX = NanoPi_NEO4;
+    public static final int NanoPi_M4v2 = RK3399_BASE+5;
+    public static final int NanoPi_M4B = RK3399_BASE+6;
+    public static final int RK3399_MAX = NanoPi_M4B;
 }
