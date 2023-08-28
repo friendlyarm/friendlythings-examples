@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RTC Sample</string>
+    <string name="txtDateLabel">RTC Date</string>
+    <string name="txtTimeLabel">RTC Time</string>
+    <string name="txtAutoWakeUpLabel">Auto Wake Up</string>
+    <string name="txtEnableAutoWakeUp">Enable Auto Wake Up</string>
+    <string name="txtPoweroff">Power off</string>
+    <string name="moreSamplesButtonText">More samples? \nClick here</string>
+</resources>
+

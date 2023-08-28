@@ -32,16 +32,35 @@
 	<LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:gravity="center_horizontal">
 		
-		<TextView android:id="@+id/label2" android:layout_width="fill_parent" android:layout_height="20dip"
-			 />
-		
-		<RelativeLayout 
-			android:orientation="vertical" android:layout_width="wrap_content"
-			android:layout_height="fill_parent">
+	    <FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1">
+	    </FrameLayout>
+
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:orientation="vertical"
+	        android:gravity="bottom"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginTop="20dp">
+
 			<Button android:id="@+id/sendButton" android:layout_width="fill_parent"
-				android:layout_height="40dip" android:text="@string/sendButtonLabel"
+				android:layout_height="wrap_content" android:text="@string/sendButtonLabel"
 				android:layout_alignParentBottom="true">
 			</Button>
-		</RelativeLayout>
+
+	       <Button
+	           android:onClick="onMoreSamplesPressed"
+	            android:id="@+id/btn_morebutton"
+	            android:text="@string/moreSamplesButtonText2"
+	            android:layout_height="wrap_content"
+	           android:layout_width="fill_parent">
+	        </Button>
+	    </LinearLayout>
+
+		
 	</LinearLayout>
 </LinearLayout>

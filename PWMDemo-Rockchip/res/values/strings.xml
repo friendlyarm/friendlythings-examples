@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PWM Sample</string>
+    <string name="PWMTestingActivityTitle">PWM Sample</string>
+    <string name="txtEnable">Enable</string>
+    <string name="txtFreq">Freq</string>
+    <string name="txtDutyCycle">Duty cycle</string>
+    <string name="txtApply">Apply</string>
+</resources>

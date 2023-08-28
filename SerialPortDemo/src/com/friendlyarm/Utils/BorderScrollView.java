@@ -13,13 +13,16 @@ public class BorderScrollView extends ScrollView
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
+
         Paint paint = new Paint();
         paint.setColor(android.graphics.Color.GRAY);
+
         canvas.drawLine(0, 0, this.getWidth() - 1, 0, paint);
         canvas.drawLine(0, 0, 0, this.getHeight() - 1, paint);
         canvas.drawLine(this.getWidth() - 1, 0, this.getWidth() - 1, this.getHeight() - 1, paint);
         canvas.drawLine(0, this.getHeight() - 1, this.getWidth() - 1, this.getHeight() - 1, paint);
     }
+
     public BorderScrollView(Context context, AttributeSet attrs)
     {
         super(context, attrs);

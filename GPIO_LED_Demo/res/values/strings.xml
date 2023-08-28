@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GPIO Sample</string>
-	<string name="MainActivityTitle">GPIO Sample</string>
-	<string name="ledtext">LED</string>
+    <string name="MainActivityTitle">GPIO Sample</string>
+    <string name="ledtext">LED</string>
+    <string name="moreSamplesButtonText">More samples? \nClick here</string>
 </resources>

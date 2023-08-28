@@ -7,4 +7,6 @@
     <string name="CommDataViewTitle">Serial Port Assistant</string>
     <string name="fromDataLabel">Data received:</string>
     <string name="toDataLabel">Text to Send:</string>
+    <string name="moreSamplesButtonText">More samples? \nClick here</string>
+    <string name="moreSamplesButtonText2">More samples? Click here</string>
 </resources>

@@ -18,12 +18,12 @@ import android.os.Handler;
 import android.os.Looper;
 
 public class MainActivity extends Activity implements OnClickListener {
-	EditText writeEditor;
-	TextView statusView;
-	private Handler messageHandler;
-	Thread writeThread = null;
-	int devFD = -1;
-	final int MAX_LINE_SIZE = 16;
+    EditText writeEditor;
+    TextView statusView;
+    private Handler messageHandler;
+    Thread writeThread = null;
+    int devFD = -1;
+    final int MAX_LINE_SIZE = 16;
 
     private class MessageHandler extends Handler {
         public MessageHandler(Looper looper) {
@@ -32,59 +32,59 @@ public class MainActivity extends Activity implements OnClickListener {
         
         @Override
         public void handleMessage(Message msg) {
-        	String result = (String) msg.obj;
-        	if (result.equals("ERROR")) {
-        		statusView.setText("Status: Error");
-        	} else if (result.equals("DONE")) {
-        		statusView.setText("Status: Done");
-        	} else {
-        		statusView.setText("Status: Processing");
-        	}
+            String result = (String) msg.obj;
+            if (result.equals("ERROR")) {
+                statusView.setText("Status: Error");
+            } else if (result.equals("DONE")) {
+                statusView.setText("Status: Done");
+            } else {
+                statusView.setText("Status: Processing");
+            }
         }
     }
     
     @Override
     public void onDestroy() {
-    	if (devFD >= 0) {
-    	    HardwareControler.close(devFD);
-    	    devFD = -1;
-    	}
-    	super.onDestroy();
+        if (devFD >= 0) {
+            HardwareControler.close(devFD);
+            devFD = -1;
+        }
+        super.onDestroy();
     }
-	
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
         
         writeEditor = (EditText) findViewById(R.id.writeEditor);
-    	writeEditor.setText("Don't give up and don't give in.");
-    	
-    	statusView = (TextView) findViewById(R.id.statusView);
-    	Button writeButton = (Button)findViewById(R.id.sendButton);
-    	writeButton.setOnClickListener(this);
+        writeEditor.setText("Don't give up and don't give in.");
+        
+        statusView = (TextView) findViewById(R.id.statusView);
+        Button writeButton = (Button)findViewById(R.id.sendButton);
+        writeButton.setOnClickListener(this);
         
         Looper looper = Looper.myLooper();
         messageHandler = new MessageHandler(looper);
         String i2cDevName = "/dev/i2c-0";
         int boardType = HardwareControler.getBoardType();
-        if (boardType == BoardType.NanoPC_T4 || boardType == BoardType.NanoPi_M4 || boardType == BoardType.NanoPi_NEO4 || boardType == BoardType.SOM_RK3399) {
+        if (mBoardType > BoardType.RK3399_BASE && mBoardType <= BoardType.RK3399_MAX) {
              i2cDevName = "/dev/i2c-2";
         }
         devFD = HardwareControler.open(i2cDevName, FileCtlEnum.O_RDWR);
         if (devFD < 0) {
-        	statusView.setText("Fail to open " + i2cDevName + " device.");
-        	writeEditor.setEnabled(false);
-        	writeButton.setEnabled(false);
+            statusView.setText("Fail to open " + i2cDevName + " device.");
+            writeEditor.setEnabled(false);
+            writeButton.setEnabled(false);
         } else {
-        	// for LCD1602 (chip: pcf8574)
-        	if (HardwareControler.setI2CSlave(devFD, 0x27) < 0) {
-        		statusView.setText("Fail to set " + i2cDevName + " slave.");
-            	writeEditor.setEnabled(false);
-            	writeButton.setEnabled(false);
-        	} else {
-        		statusView.setText("Status: Ready");
-        	}
+            // for LCD1602 (chip: pcf8574)
+            if (HardwareControler.setI2CSlave(devFD, 0x27) < 0) {
+                statusView.setText("Fail to set " + i2cDevName + " slave.");
+                writeEditor.setEnabled(false);
+                writeButton.setEnabled(false);
+            } else {
+                statusView.setText("Status: Ready");
+            }
         }
     }
 
@@ -123,7 +123,7 @@ public class MainActivity extends Activity implements OnClickListener {
     
     private int LCD1602DispStr(byte x, byte y, String str) throws InterruptedException
     {
-    	byte addr;
+        byte addr;
         addr = (byte)(((y + 2) * 0x40) + x);
 
         if (PCF8574.writeCmd8(devFD, addr) == -1) {
@@ -132,12 +132,12 @@ public class MainActivity extends Activity implements OnClickListener {
         byte[] strBytes = str.getBytes();
         byte b;
 
-		for (int i = 0; i < strBytes.length && i<MAX_LINE_SIZE; i++) {
-			b = strBytes[i];
+        for (int i = 0; i < strBytes.length && i<MAX_LINE_SIZE; i++) {
+            b = strBytes[i];
             if (PCF8574.writeData8(devFD, b) == -1) {
                 return -1;
             }
-		}
+        }
         return 0;
     }
 
@@ -158,71 +158,71 @@ public class MainActivity extends Activity implements OnClickListener {
     
     private boolean lcd1602Inited = false;
     private void sendMessage(String msg) {
-		Message message = Message.obtain();
-		message.obj = msg;
-		messageHandler.sendMessage(message);
+        Message message = Message.obtain();
+        message.obj = msg;
+        messageHandler.sendMessage(message);
     }
     private void startWriteEEPROMThread(final String displayText) {
-    	statusView.setText("Status: Processing");
-    	new Thread() {
+        statusView.setText("Status: Processing");
+        new Thread() {
             @Override
             public void run() {
-            	if (!lcd1602Inited) {
-            		try  {  
+                if (!lcd1602Inited) {
+                    try  {  
                         if (LCD1602Init() == 0) {
-                        	lcd1602Inited = true;
+                            lcd1602Inited = true;
                         }
                     } catch  (Exception e) {  
-                		sendMessage("ERROR");
-        				return ;
+                        sendMessage("ERROR");
+                        return ;
                     }
-            	}
+                }
 
-            	if (!lcd1602Inited) {
-            		sendMessage("ERROR");
-    				return ;
-            	}
-            	
-            	try {
-            		LCD1602Clear();
-            		Thread.sleep(100, 0);
-            		
-            		String line1 = "";
-            		String line2 = "";
-            		for (int i=0; i<displayText.length(); i++) {
-            			if (line1.length() >= MAX_LINE_SIZE) {
-            				if (line2.length() >= MAX_LINE_SIZE) {
-            					break;
-            				} else {
-            					line2 = line2 + displayText.charAt(i);
-            				}
-            			} else {
-            				line1 = line1 + displayText.charAt(i);
-            			}
-            		}
-            		
-            		if (LCD1602DispLines(line1, line2) == -1) {
-            			sendMessage("ERROR");
-            			return ;
-            		}
-            	} catch (Exception e) {
-            		sendMessage("ERROR");
-    				return ;
-            	}
-				sendMessage("DONE");
+                if (!lcd1602Inited) {
+                    sendMessage("ERROR");
+                    return ;
+                }
+                
+                try {
+                    LCD1602Clear();
+                    Thread.sleep(100, 0);
+                    
+                    String line1 = "";
+                    String line2 = "";
+                    for (int i=0; i<displayText.length(); i++) {
+                        if (line1.length() >= MAX_LINE_SIZE) {
+                            if (line2.length() >= MAX_LINE_SIZE) {
+                                break;
+                            } else {
+                                line2 = line2 + displayText.charAt(i);
+                            }
+                        } else {
+                            line1 = line1 + displayText.charAt(i);
+                        }
+                    }
+                    
+                    if (LCD1602DispLines(line1, line2) == -1) {
+                        sendMessage("ERROR");
+                        return ;
+                    }
+                } catch (Exception e) {
+                    sendMessage("ERROR");
+                    return ;
+                }
+                sendMessage("DONE");
             }
 
         }.start();
     }
     
-	public void onClick(View v) {
-		switch (v.getId()) {
-    	case R.id.sendButton:
-    		startWriteEEPROMThread(writeEditor.getText().toString());
-    		break;
-		default:
-			break;
-		}
-	}
-	
+    public void onClick(View v) {
+        switch (v.getId()) {
+        case R.id.sendButton:
+            startWriteEEPROMThread(writeEditor.getText().toString());
+            break;
+        default:
+            break;
+        }
+    }
+    
 }

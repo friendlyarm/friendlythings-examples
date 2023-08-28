@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Watchdog Sample</string>
+    <string name="txtWarning">Once START, Feed the dog, or else REBOOT</string>
+    <string name="txtStart">Start</string>
+    <string name="txtFeed">Feed</string>
+    <string name="moreSamplesButtonText">More samples? \nClick here</string>
+</resources>
+

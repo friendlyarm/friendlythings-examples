@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtEnable"
+        android:id="@+id/checkbox_enable"
+        android:checked="true"
+        android:onClick="onCheckboxEnableClicked"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtFreq"
+        android:id="@+id/text_freq"
+        android:layout_marginTop="10dp"/>
+    <SeekBar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekbar_pwm_freq"
+        android:progress="7"
+        android:min="0"
+        android:max="11"
+        android:longClickable="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtDutyCycle"
+        android:id="@+id/text_cycle"
+        android:layout_marginTop="10dp"/>
+    <SeekBar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:progress="50"
+        android:max="100"
+        android:id="@+id/seekbar_cycle"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtApply"
+        android:id="@+id/button_apply"
+        android:layout_marginTop="40dp"
+        android:onClick="onApplyPressed"/>
+</LinearLayout>

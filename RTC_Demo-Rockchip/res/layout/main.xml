@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtDateLabel"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_date"
+        android:textSize="24dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtTimeLabel"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_time"
+        android:textSize="24dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_autoWakeUpLabel"
+        android:layout_marginTop="10dp"/>
+
+    <SeekBar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekbar_autowakeup"
+        android:progress="120"
+        android:max="3600"
+        android:longClickable="true"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtEnableAutoWakeUp"
+        android:id="@+id/button_enableAutoWakeUp"
+        android:layout_marginTop="40dp"
+        android:onClick="onEnableAutoWakeUpPressed"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_result"
+        android:textSize="24dp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtPoweroff"
+        android:layout_marginTop="40dp"
+        android:onClick="onPoweroffPressed"/>
+
+    <FrameLayout
+	android:layout_width="match_parent"
+	android:layout_height="0dp"
+	android:layout_weight="1">
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp">
+       <Button
+           android:onClick="onMoreSamplesPressed"
+            android:id="@+id/btn_morebutton"
+            android:text="@string/moreSamplesButtonText"
+            android:layout_height="wrap_content"
+           android:layout_width="fill_parent">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>
