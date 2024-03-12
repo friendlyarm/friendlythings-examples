@@ -97,12 +97,15 @@ public class BoardType {
     public static final int NanoPi_R5S = RK3568_BASE+1;
     public static final int NanoPi_R5C = RK3568_BASE+2;
     public static final int NanoPi_R5S_LTS = RK3568_BASE+3;
-    public static final int RK3568_MAX = NanoPi_R5S_LTS;
+    public static final int CM3568 = RK3568_BASE+4;
+    public static final int RK3568_MAX = CM3568;
 
     //rk3588
     public static final int RK3588_BASE = 9700;
     public static final int NanoPi_R6S = RK3588_BASE+1;
     public static final int NanoPC_T6 = RK3588_BASE+2;
     public static final int NanoPi_R6C = RK3588_BASE+3;
-    public static final int RK3588_MAX = NanoPi_R6C;
+    public static final int NanoPC_T6_LTS = RK3588_BASE+4;
+    public static final int CM3588 = RK3588_BASE+5;
+    public static final int RK3588_MAX = CM3588;
 }
